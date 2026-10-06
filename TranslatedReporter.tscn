@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dbvcnyqcj1c15"]
+
+[ext_resource type="PackedScene" uid="uid://dj67hsmvv1p38" path="res://addons/BugReporter/reporters/reporter.tscn" id="1_khbna"]
+
+[node name="Reporter" unique_id=1084947887 instance=ExtResource("1_khbna")]
+
+[node name="Label" parent="VBox" parent_id_path=PackedInt32Array(2130648842) index="0" unique_id=410239743]
+text = "T_FEEDBACK"
+
+[node name="Label2" parent="VBox" parent_id_path=PackedInt32Array(2130648842) index="2" unique_id=49614235]
+text = "T_MESSAGE_LABEL"
+
+[node name="Label" parent="VBox/Mail" parent_id_path=PackedInt32Array(1867226052) index="0" unique_id=480014173]
+text = "T_CONTACT_LABEL"
+
+[node name="SendButton" parent="VBox" parent_id_path=PackedInt32Array(2130648842) index="9" unique_id=786819787]
+text = "T_SEND"

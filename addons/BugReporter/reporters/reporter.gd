@@ -33,6 +33,15 @@ extends PanelContainer
 
 var _cfg : ConfigFile
 
+@export_category("Tween Settings")
+@export var menu_ease : Tween.EaseType
+@export var menu_trans : Tween.TransitionType
+@export var menu_tween_time : float = 0.2
+@export var start_scale : Vector2
+@export var target_scale : Vector2
+var menu_tween : Tween
+var is_open : bool = false
+
 
 @onready var _webhook : WebhookBuilder = $WebhookBuilder
 
@@ -43,6 +52,8 @@ var _cfg : ConfigFile
 func _ready():
 	_reload_cfg()
 	_webhook.message_send_finished.connect(_send_button.set.bind("disabled", false))
+	
+	scale = start_scale
 	
 	# Test for Screenshotmanager installed and active
 	var shmanager : Node = get_node_or_null("/root/ScreenshotManager")
@@ -60,11 +71,39 @@ func _ready():
 # only for taking screenshots. Disabled when Screenshot manager is installed
 func _input(event):
 	if event.is_action("screenshot") and event.is_pressed() and !event.is_echo():
-		var img := get_viewport().get_texture().get_image()
-		var text := ImageTexture.create_from_image(img)
-		_screenshot.texture_normal = text
-		_screenshot_check.disabled = false
+		toggle_report_menu()
 
+
+func _take_screenshot() -> void:
+	var img := get_viewport().get_texture().get_image()
+	var text := ImageTexture.create_from_image(img)
+	_screenshot.texture_normal = text
+	_screenshot_check.disabled = false
+
+
+## Opens and closes the bug report menu
+func toggle_report_menu() -> void:
+	if menu_tween:
+		menu_tween.kill()
+	
+	menu_tween = create_tween()
+	menu_tween.set_ease(menu_ease)
+	menu_tween.set_trans(menu_trans)
+	
+	if !is_open:
+		_take_screenshot()
+		visible = true
+	
+	is_open = !is_open
+	
+	pivot_offset = size / 2
+	
+	if is_open:
+		menu_tween.tween_property(self, "scale", target_scale, menu_tween_time)
+	else:
+		menu_tween.tween_property(self, "scale", start_scale, menu_tween_time)
+		await menu_tween.finished
+		visible = false
 
 #endregion
 #region Reporter public functions

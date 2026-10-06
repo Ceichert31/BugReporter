@@ -1,12 +1,21 @@
-[gd_scene format=3 uid="uid://dj67hsmvv1p38"]
+[gd_scene format=3 uid="uid://l8nja1qigq7o"]
 
-[ext_resource type="Script" uid="uid://bcwsmp7sxced3" path="res://addons/BugReporter/reporters/reporter.gd" id="1_7afts"]
-[ext_resource type="PackedScene" uid="uid://dmn75l8pt7i8t" path="res://addons/BugReporter/webhook_builder/webhook_builder.tscn" id="2_hokb7"]
+[ext_resource type="Script" uid="uid://bcwsmp7sxced3" path="res://addons/BugReporter/reporters/reporter.gd" id="1_huc27"]
+[ext_resource type="PackedScene" uid="uid://dmn75l8pt7i8t" path="res://addons/BugReporter/webhook_builder/webhook_builder.tscn" id="2_jeyaj"]
 
 [node name="Reporter" type="PanelContainer" unique_id=1661779943 node_paths=PackedStringArray("_message_text", "_mail_line_edit", "_options", "_screenshot_check", "_screenshot", "_analytics_button", "_send_button", "_text_limit")]
-offset_right = 387.0
-offset_bottom = 488.0
-script = ExtResource("1_7afts")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.5
+offset_top = -244.0
+offset_right = 193.5
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_huc27")
 _message_text = NodePath("VBox/MessageText")
 _mail_line_edit = NodePath("VBox/Mail/ContactLineEdit")
 _options = NodePath("VBox/MessageOptions")
@@ -15,8 +24,12 @@ _screenshot = NodePath("VBox/ScreenshotTexture")
 _analytics_button = NodePath("VBox/AnalyticsButton")
 _send_button = NodePath("VBox/SendButton")
 _text_limit = NodePath("VBox/TextLimit")
+menu_ease = 1
+menu_trans = 3
+start_scale = Vector2(1, 0)
+target_scale = Vector2(1, 1)
 
-[node name="WebhookBuilder" parent="." unique_id=165947491 instance=ExtResource("2_hokb7")]
+[node name="WebhookBuilder" parent="." unique_id=165947491 instance=ExtResource("2_jeyaj")]
 
 [node name="VBox" type="VBoxContainer" parent="." unique_id=2130648842]
 layout_mode = 2

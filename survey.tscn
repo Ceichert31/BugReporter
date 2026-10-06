@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmilcjm6ovwex"]
+[gd_scene format=3 uid="uid://cmilcjm6ovwex"]
 
-[ext_resource type="Script" path="res://addons/BugReporter/reporters/survey.gd" id="1_etdgk"]
+[ext_resource type="Script" uid="uid://bfvsael5dfkjx" path="res://survey.gd" id="1_etdgk"]
 [ext_resource type="PackedScene" uid="uid://dmn75l8pt7i8t" path="res://addons/BugReporter/webhook_builder/webhook_builder.tscn" id="2_30afw"]
 
-[node name="survey" type="Window"]
+[node name="survey" type="Window" unique_id=1357720810]
+oversampling_override = 1.0
 title = "Game Survey"
 size = Vector2i(500, 500)
 visible = false
@@ -86,58 +87,58 @@ Fortnite
 	remain ignorant
 "
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1343112625]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="." unique_id=1740205696]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Main" type="VBoxContainer" parent="Margin"]
+[node name="Main" type="VBoxContainer" parent="Margin" unique_id=846243242]
 layout_mode = 2
 
-[node name="QuestionLabel" type="Label" parent="Margin/Main"]
+[node name="QuestionLabel" type="Label" parent="Margin/Main" unique_id=2132865865]
 layout_mode = 2
 text = "Question"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Answers" type="VBoxContainer" parent="Margin/Main"]
+[node name="Answers" type="VBoxContainer" parent="Margin/Main" unique_id=1551068835]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="SkipBtn" type="Button" parent="Margin/Main"]
+[node name="SkipBtn" type="Button" parent="Margin/Main" unique_id=851241032]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Skip"
 
-[node name="NavButtons" type="HBoxContainer" parent="Margin/Main"]
+[node name="NavButtons" type="HBoxContainer" parent="Margin/Main" unique_id=367437061]
 layout_mode = 2
 
-[node name="BackBtn" type="Button" parent="Margin/Main/NavButtons"]
+[node name="BackBtn" type="Button" parent="Margin/Main/NavButtons" unique_id=844024775]
 layout_mode = 2
 text = "Back"
 
-[node name="ProgressBar" type="ProgressBar" parent="Margin/Main/NavButtons"]
+[node name="ProgressBar" type="ProgressBar" parent="Margin/Main/NavButtons" unique_id=626435966]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
 show_percentage = false
 
-[node name="NextBtn" type="Button" parent="Margin/Main/NavButtons"]
+[node name="NextBtn" type="Button" parent="Margin/Main/NavButtons" unique_id=382523298]
 layout_mode = 2
 text = "Next"
 
-[node name="WebhookBuilder" parent="." instance=ExtResource("2_30afw")]
+[node name="WebhookBuilder" parent="." unique_id=205155395 instance=ExtResource("2_30afw")]
 process_mode = 3
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
